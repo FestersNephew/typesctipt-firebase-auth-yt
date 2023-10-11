@@ -2,6 +2,7 @@ import {
   StyleSheet,
   Text,
   View,
+  Image,
   TouchableOpacity,
   TextInput,
   Platform,
@@ -43,8 +44,15 @@ export default function Login({ navigation }: { navigation: any }) {
 
   return (
     <View style={styles.container}>
+      <View style={styles.imageContainer}>
+        <Image
+          source={require("../assets/forgot.png")}
+          style={{ width: 300, height: 300 }}
+        />
+      </View>
       <View style={styles.loginHeader}>
-        <Text style={styles.loginHeaderText}>Welcome Warrior, Let's sign you in</Text>
+        <Text style={styles.loginHeaderText}>Welcome Warrior, </Text>
+        <Text style={styles.loginHeaderText2}>Let's get you signed in.</Text>
       </View>
 
       <View style={styles.loginContainer}>
@@ -100,8 +108,7 @@ export default function Login({ navigation }: { navigation: any }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginHorizontal: 15,
-    marginTop: height * 0.05,
+    backgroundColor: "#201D28",
   },
   arrowContainer: {
     width: 40,
@@ -113,29 +120,43 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   loginHeader: {
-    marginTop: 20,
+    marginHorizontal: 40,
+    textAlign: "center",
+    justifyContent: "center",
   },
   loginHeaderText: {
-    fontSize: 36,
+    fontSize: 35,
     fontWeight: "bold",
+    color: Colors.secondary,
+    textAlign: "center",
+    justifyContent: "center",
+  },
+  loginHeaderText2: {
+    fontSize: 25,
+    fontWeight: "bold",
+    color: Colors.secondary,
+    textAlign: "center",
+    justifyContent: "center",
   },
   loginContainer: {
     marginTop: 20,
   },
   emailContainer: {
     marginTop: 20,
+
   },
   emailText: {
     fontSize: 16,
     fontWeight: "bold",
+    color: Colors.primary,
   },
   emailInput: {
     marginTop: 10,
     width: "100%",
     height: 50,
-    backgroundColor: Colors.light,
+    backgroundColor: Colors.secondary,
     borderWidth: 1,
-    borderColor: Colors.light,
+    borderColor: Colors.primary,
     borderRadius: 8,
     paddingLeft: 10,
   },
@@ -145,16 +166,17 @@ const styles = StyleSheet.create({
   passwordText: {
     fontSize: 16,
     fontWeight: "bold",
+    color: Colors.primary,
   },
   passwordInput: {
     marginTop: 10,
     width: "100%",
     height: 50,
-    backgroundColor: Colors.light,
+    backgroundColor: Colors.secondary,
     borderRadius: 8,
     paddingLeft: 10,
     borderWidth: 1,
-    borderColor: Colors.light,
+    borderColor: Colors.primary,
   },
   forgotContainer: {
     marginTop: 20,
@@ -164,6 +186,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: "bold",
     color: Colors.primary,
+    paddingRight: 30,
   },
   loginButton: {
     marginTop: 20,
@@ -177,7 +200,7 @@ const styles = StyleSheet.create({
   loginButtonText: {
     fontSize: 16,
     fontWeight: "bold",
-    color: Colors.white,
+    color: Colors.text,
   },
   signupGroup: {
     flexDirection: "row",
@@ -195,5 +218,11 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: "500",
     marginRight: 5,
+  },
+  imageContainer: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: height * 0.02,
+    marginHorizontal: 5,
   },
 });

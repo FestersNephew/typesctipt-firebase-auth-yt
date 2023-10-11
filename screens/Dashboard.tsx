@@ -61,6 +61,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
+    backgroundColor:"#201D28",
   },
   button: {
     backgroundColor: Colors.primary,
