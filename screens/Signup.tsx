@@ -126,6 +126,7 @@ const styles = StyleSheet.create({
     flex: 1,
     marginHorizontal: 15,
     marginTop: height * 0.05,
+    backgroundColor: Colors.dark,
   },
   arrowContainer: {
     width: 40,
