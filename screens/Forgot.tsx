@@ -14,7 +14,7 @@ import { auth } from "../firebase/firebase";
 import { Feather } from "@expo/vector-icons";
 import { sendPasswordResetEmail } from "firebase/auth";
 
-export default function ForgotPassword() {
+export default function ForgotPassword({ navigation }: { navigation: any }) {
   const [email, setEmail] = useState<string>("");
 
   const handlePassword = async () => {
@@ -63,6 +63,11 @@ export default function ForgotPassword() {
             <Text style={styles.send}>Send password reset link</Text>
           </View>
         </TouchableOpacity>
+        <View style={styles.goBackButton}>
+          <TouchableOpacity onPress={() => navigation.push("Login")}>
+            <Text style={styles.send}>Press Here To Go Back To Login</Text>
+          </TouchableOpacity>
+        </View>
         <View style={styles.spam}>
           <Text style={{ fontSize: 12, color: "#000", fontWeight: "400" }}>
             Check your email spam folder to find password reset link
@@ -132,6 +137,16 @@ const styles = StyleSheet.create({
   formContainer: {
     width: "100%",
   },
+  goBackButton: {
+    marginTop: "5%",
+    width: "100%",
+    height: 50,
+    backgroundColor: Colors.grey,
+    alignItems: "center",
+    justifyContent: "center",
+    borderRadius: 10,
+    marginBottom: 10,
+  }
 });
 // behavior={Platform.OS === "ios" ? "padding" : "height"}
 //       // keyboardVerticalOffset={Platform.OS === "ios" ? -64 : 0}

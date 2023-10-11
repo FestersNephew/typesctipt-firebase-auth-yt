@@ -44,7 +44,7 @@ export default function Login({ navigation }: { navigation: any }) {
   return (
     <View style={styles.container}>
       <View style={styles.loginHeader}>
-        <Text style={styles.loginHeaderText}>Let's sign you in 🚀</Text>
+        <Text style={styles.loginHeaderText}>Welcome Warrior, Let's sign you in</Text>
       </View>
 
       <View style={styles.loginContainer}>
