@@ -12,7 +12,7 @@ import React, { useState } from "react";
 import Colors from "../constants/Colors";
 import { Feather } from "@expo/vector-icons";
 import { auth, db } from "../firebase/firebase";
-import { Entypo } from "@expo/vector-icons";
+//import { Entypo } from "@expo/vector-icons";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { doc, setDoc } from "firebase/firestore";
 
@@ -46,7 +46,7 @@ export default function Signup({ navigation }: { navigation: any }) {
       })
       .then(() => alert("account created successfully 🎉"))
       .catch((err: any) => {
-        alert(err.meassage);
+        alert(err.message);
       });
   };
 

@@ -1,5 +1,5 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-
+import React from 'react';
 import Dashboard from "../screens/Dashboard";
 import Profile from "../screens/Profile";
 
