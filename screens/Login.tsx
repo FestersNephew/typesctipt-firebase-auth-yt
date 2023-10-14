@@ -8,6 +8,7 @@ import {
   Platform,
   Dimensions,
 } from "react-native";
+import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import React, { useState } from "react";
 import Colors from "../constants/Colors";
 import { Feather } from "@expo/vector-icons";
@@ -43,65 +44,67 @@ export default function Login({ navigation }: { navigation: any }) {
   };
 
   return (
-    <View style={styles.container}>
-      <View style={styles.imageContainer}>
-        <Image
-          source={require("../assets/forgot.png")}
-          style={{ width: 300, height: 300 }}
-        />
-      </View>
-      <View style={styles.loginHeader}>
-        <Text style={styles.loginHeaderText}>Welcome Warrior, </Text>
-        <Text style={styles.loginHeaderText2}>Let's get you signed in.</Text>
-      </View>
+      <KeyboardAwareScrollView>
+        <View style={styles.container}>
+          <View style={styles.imageContainer}>
+            <Image
+              source={require("../assets/forgot.png")}
+              style={{ width: 300, height: 300 }}
+            />
+          </View>
+          <View style={styles.loginHeader}>
+            <Text style={styles.loginHeaderText}>Welcome Warrior, </Text>
+            <Text style={styles.loginHeaderText2}>Let's get you signed in.</Text>
+          </View>
 
-      <View style={styles.loginContainer}>
-        {/* Email */}
-        <View style={styles.emailContainer}>
-          <Text style={styles.emailText}>Email</Text>
-          <TextInput
-            style={styles.emailInput}
-            placeholder="Enter your email"
-            value={email}
-            onChangeText={(text) => setEmail(text)}
-          />
-        </View>
-        {/* Password */}
-        <View style={styles.passwordContainer}>
-          <Text style={styles.passwordText}>Password</Text>
-          <TextInput
-            style={styles.passwordInput}
-            placeholder="Enter your password"
-            value={password}
-            secureTextEntry={true}
-            onChangeText={(text) => setPassword(text)}
-          />
-        </View>
-        {/* Forgot Password */}
-        <View style={styles.forgotContainer}>
-          <TouchableOpacity onPress={() => navigation.push("Forgot")}>
-            <Text style={styles.forgotText}>Forgot Password?</Text>
-          </TouchableOpacity>
-        </View>
-        {/* Login Button */}
-        <View style={styles.loginButton}>
-          <TouchableOpacity onPress={handleSignin}>
-            <Text style={styles.loginButtonText}>
-              {
-                loading ? "Loading" : "Login"
-              }
-            </Text>
-          </TouchableOpacity>
-        </View>
+          <View style={styles.loginContainer}>
+            {/* Email */}
+            <View style={styles.emailContainer}>
+              <Text style={styles.emailText}>Email</Text>
+              <TextInput
+                style={styles.emailInput}
+                placeholder="Enter your email"
+                value={email}
+                onChangeText={(text) => setEmail(text)}
+              />
+            </View>
+            {/* Password */}
+            <View style={styles.passwordContainer}>
+              <Text style={styles.passwordText}>Password</Text>
+              <TextInput
+                style={styles.passwordInput}
+                placeholder="Enter your password"
+                value={password}
+                secureTextEntry={true}
+                onChangeText={(text) => setPassword(text)}
+              />
+            </View>
+            {/* Forgot Password */}
+            <View style={styles.forgotContainer}>
+              <TouchableOpacity onPress={() => navigation.push("Forgot")}>
+                <Text style={styles.forgotText}>Forgot Password?</Text>
+              </TouchableOpacity>
+            </View>
+            {/* Login Button */}
+            <View style={styles.loginButton}>
+              <TouchableOpacity onPress={handleSignin}>
+                <Text style={styles.loginButtonText}>
+                  {
+                    loading ? "Loading" : "Login"
+                  }
+                </Text>
+              </TouchableOpacity>
+            </View>
 
-        <View style={styles.signupGroup}>
-          <Text style={styles.new}>New here?</Text>
-          <TouchableOpacity onPress={() => navigation.push("Signup")}>
-            <Text style={styles.signup}>Sign Up</Text>
-          </TouchableOpacity>
+            <View style={styles.signupGroup}>
+              <Text style={styles.new}>New here?</Text>
+              <TouchableOpacity onPress={() => navigation.push("Signup")}>
+                <Text style={styles.signup}>Sign Up</Text>
+              </TouchableOpacity>
+            </View>
+          </View>
         </View>
-      </View>
-    </View>
+      </KeyboardAwareScrollView>
   );
 }
 
@@ -109,15 +112,13 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#201D28",
+    minHeight: Math.round(Dimensions.get('window').height),
   },
-  arrowContainer: {
-    width: 40,
-    height: 40,
-    borderTopLeftRadius: 8,
-    borderBottomRightRadius: 8,
-    backgroundColor: Colors.primary,
-    justifyContent: "center",
-    alignItems: "center",
+  imageContainer: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: height * 0.02,
+    marginHorizontal: 5,
   },
   loginHeader: {
     marginHorizontal: 40,
@@ -140,6 +141,7 @@ const styles = StyleSheet.create({
   },
   loginContainer: {
     marginTop: 20,
+    marginHorizontal: 10,
   },
   emailContainer: {
     marginTop: 20,
@@ -208,21 +210,15 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
-  signup: {
-    color: Colors.primary,
-    fontSize: 16,
-    fontWeight: "bold",
-    marginRight: 5,
-  },
   new: {
     fontSize: 16,
     fontWeight: "500",
     marginRight: 5,
   },
-  imageContainer: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginTop: height * 0.02,
-    marginHorizontal: 5,
+  signup: {
+    color: Colors.primary,
+    fontSize: 16,
+    fontWeight: "bold",
+    marginRight: 5,
   },
 });

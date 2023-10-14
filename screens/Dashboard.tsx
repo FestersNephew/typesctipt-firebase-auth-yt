@@ -3,19 +3,17 @@ import {
   Text,
   View,
   TouchableOpacity,
-  TextInput,
-  Platform,
-  Dimensions,
   Alert,
 } from "react-native";
 import React, { useState, useEffect } from "react";
 import Colors from "../constants/Colors";
-import { Feather } from "@expo/vector-icons";
 import { auth, db } from "../firebase/firebase";
 import { doc, getDoc } from "firebase/firestore";
+import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
+import UserProfile from "../components/UserProfile";
 
 export default function Dashboard({ navigation }: { navigation: any }) {
-  const [userInfo, setUserInfo] = useState<any | undefined>(null);
+  const [userInfo, setUserInfo] = useState<any | undefined>();
 
   const handleSignout = async () => {
     await auth.signOut();
@@ -32,27 +30,35 @@ export default function Dashboard({ navigation }: { navigation: any }) {
 
   const getData = async () => {
     const docRef = doc(db, "users", "info");
-    const docSnap = await getDoc(docRef);
-    if (docSnap.exists()) {
-      console.log("Document data:", docSnap.data());
-      setUserInfo(docSnap.data());
-    } else {
-      console.log("No such document!");
+    try {
+      const docSnap = await getDoc(docRef);
+      if (docSnap.exists()) {
+        console.log("Document data:", docSnap.data());
+        setUserInfo(docSnap.data());
+      } else {
+        console.log("No such document!");
+      }
+    } catch (error) {
+      console.error("Error fetching document:", error);
     }
   };
+  
 
   useEffect(() => {
     getData();
   }, []);
+
   return (
-    <View style={styles.container}>
-      <Text style={{ fontSize: 25 }}>Welcome Fam!</Text>
-      <View>
-        <TouchableOpacity style={styles.button} onPress={Modal}>
-          <Text style={{ color: Colors.white, fontSize: 20 }}>Sign out</Text>
-        </TouchableOpacity>
+    <KeyboardAwareScrollView>
+      <View style={styles.container}>
+        <Text style={styles.welcome}>Welcome Fam!</Text>
+        <View>
+          <TouchableOpacity style={styles.button} onPress={Modal}>
+            <Text style={{ color: Colors.white, fontSize: 20 }}>Sign out</Text>
+          </TouchableOpacity>
+        </View>
       </View>
-    </View>
+    </KeyboardAwareScrollView>
   );
 }
 
@@ -61,7 +67,8 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor:"#201D28",
+    marginVertical: 180,
+    backgroundColor: "#201D28",
   },
   button: {
     backgroundColor: Colors.primary,
@@ -72,5 +79,11 @@ const styles = StyleSheet.create({
     alignItems: "center",
     width: 200,
     marginTop: 30,
+  },
+  welcome: {
+    color: "#00A8DE",
+    fontSize: 45,
+    fontWeight: "bold",
+    alignSelf: "center",
   },
 });

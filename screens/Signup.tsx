@@ -6,15 +6,14 @@ import {
   TextInput,
   Platform,
   Dimensions,
-  KeyboardAvoidingView,
 } from "react-native";
 import React, { useState } from "react";
 import Colors from "../constants/Colors";
-import { Feather } from "@expo/vector-icons";
 import { auth, db } from "../firebase/firebase";
 //import { Entypo } from "@expo/vector-icons";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { doc, setDoc } from "firebase/firestore";
+import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 
 const { width, height } = Dimensions.get("window");
 let top;
@@ -51,101 +50,97 @@ export default function Signup({ navigation }: { navigation: any }) {
   };
 
   return (
-    <View style={styles.container}>
-      <View style={styles.loginHeader}>
-        <Text style={styles.loginHeaderText}>Sign up now 🎉</Text>
+    <KeyboardAwareScrollView>
+      <View style={styles.container}>
+        <View style={styles.loginHeader}>
+          <Text style={styles.loginHeaderText}>Sign up now</Text>
+        </View>
+          {/* Username */}
+          <View style={styles.emailContainer}>
+            <Text style={styles.emailText}>Username</Text>
+            <TextInput
+              style={styles.emailInput}
+              placeholder="Enter your name"
+              value={username}
+              onChangeText={(text) => setUsername(text)}
+            />
+          </View>
+          {/* Email */}
+          <View style={styles.emailContainer}>
+            <Text style={styles.emailText}>Email</Text>
+            <TextInput
+              style={styles.emailInput}
+              placeholder="Enter your email"
+              value={email}
+              onChangeText={(text) => setEmail(text)}
+            />
+          </View>
+          {/* Phone Number */}
+          <View style={styles.emailContainer}>
+            <Text style={styles.emailText}>Phone Number</Text>
+            <TextInput
+              style={styles.emailInput}
+              placeholder="Enter your phone number"
+              value={phone?.toString()}
+              keyboardType="numeric"
+              onChangeText={(text) => setPhone(text)}
+            />
+          </View>
+          {/* Password */}
+          <View style={styles.passwordContainer}>
+            <Text style={styles.passwordText}>Password</Text>
+            <TextInput
+              style={styles.passwordInput}
+              placeholder="Enter your password"
+              value={password}
+              secureTextEntry={true}
+              onChangeText={(text) => setPassword(text)}
+            />
+          </View>
+          {/* Forgot Password */}
+
+          {/* Login Button */}
+          <View style={styles.loginButton}>
+            <TouchableOpacity onPress={handleSignup}>
+              <Text style={styles.loginButtonText}>
+                {loading ? "Creating account..." : "Create Account"}
+              </Text>
+            </TouchableOpacity>
+          </View>
+
+          <View style={styles.signupGroup}>
+            <Text style={styles.new}>Already have an account?</Text>
+            <TouchableOpacity onPress={() => navigation.push("Login")}>
+              <Text style={styles.signup}>Login</Text>
+            </TouchableOpacity>
+          </View>
       </View>
-
-      <KeyboardAvoidingView behavior="padding" style={styles.loginContainer}>
-        {/* Username */}
-        <View style={styles.emailContainer}>
-          <Text style={styles.emailText}>Username</Text>
-          <TextInput
-            style={styles.emailInput}
-            placeholder="Enter your name"
-            value={username}
-            onChangeText={(text) => setUsername(text)}
-          />
-        </View>
-        {/* Email */}
-        <View style={styles.emailContainer}>
-          <Text style={styles.emailText}>Email</Text>
-          <TextInput
-            style={styles.emailInput}
-            placeholder="Enter your email"
-            value={email}
-            onChangeText={(text) => setEmail(text)}
-          />
-        </View>
-        {/* Phone Number */}
-        <View style={styles.emailContainer}>
-          <Text style={styles.emailText}>Phone Number</Text>
-          <TextInput
-            style={styles.emailInput}
-            placeholder="Enter your phone number"
-            value={phone?.toString()}
-            keyboardType="numeric"
-            onChangeText={(text) => setPhone(text)}
-          />
-        </View>
-        {/* Password */}
-        <View style={styles.passwordContainer}>
-          <Text style={styles.passwordText}>Password</Text>
-          <TextInput
-            style={styles.passwordInput}
-            placeholder="Enter your password"
-            value={password}
-            secureTextEntry={true}
-            onChangeText={(text) => setPassword(text)}
-          />
-        </View>
-        {/* Forgot Password */}
-
-        {/* Login Button */}
-        <View style={styles.loginButton}>
-          <TouchableOpacity onPress={handleSignup}>
-            <Text style={styles.loginButtonText}>
-              {loading ? "Creating account..." : "Create Account"}
-            </Text>
-          </TouchableOpacity>
-        </View>
-
-        <View style={styles.signupGroup}>
-          <Text style={styles.new}>Already have an account?</Text>
-          <TouchableOpacity onPress={() => navigation.push("Login")}>
-            <Text style={styles.signup}>Login</Text>
-          </TouchableOpacity>
-        </View>
-      </KeyboardAvoidingView>
-    </View>
+    </KeyboardAwareScrollView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginHorizontal: 15,
-    marginTop: height * 0.05,
-    backgroundColor: Colors.dark,
-  },
-  arrowContainer: {
-    width: 40,
-    height: 40,
-    borderTopLeftRadius: 8,
-    borderBottomRightRadius: 8,
-    backgroundColor: Colors.primary,
-    justifyContent: "center",
-    alignItems: "center",
+    backgroundColor: "#201D28",
+    minHeight: Math.round(Dimensions.get('window').height),
   },
   loginHeader: {
-    marginTop: 20,
+    marginHorizontal: 40,
+    marginTop:100,
+    textAlign: "center",
+    justifyContent: "center",
   },
   loginHeaderText: {
-    fontSize: 36,
+    fontSize: 35,
     fontWeight: "bold",
+    color: Colors.secondary,
+    textAlign: "center",
+    justifyContent: "center",
   },
   loginContainer: {
     marginTop: 20,
+    marginHorizontal: 10,
   },
   emailContainer: {
     marginTop: 20,
@@ -153,14 +148,15 @@ const styles = StyleSheet.create({
   emailText: {
     fontSize: 16,
     fontWeight: "bold",
+    color: Colors.primary,
   },
   emailInput: {
     marginTop: 10,
     width: "100%",
     height: 50,
-    backgroundColor: Colors.light,
+    backgroundColor: Colors.secondary,
     borderWidth: 1,
-    borderColor: Colors.light,
+    borderColor: Colors.primary,
     borderRadius: 8,
     paddingLeft: 10,
   },
@@ -170,16 +166,17 @@ const styles = StyleSheet.create({
   passwordText: {
     fontSize: 16,
     fontWeight: "bold",
+    color: Colors.primary,
   },
   passwordInput: {
     marginTop: 10,
     width: "100%",
     height: 50,
-    backgroundColor: Colors.light,
+    backgroundColor: Colors.secondary,
+    borderWidth: 1,
+    borderColor: Colors.primary,
     borderRadius: 8,
     paddingLeft: 10,
-    borderWidth: 1,
-    borderColor: Colors.light,
   },
   forgotContainer: {
     marginTop: 20,
@@ -191,7 +188,7 @@ const styles = StyleSheet.create({
     color: Colors.primary,
   },
   loginButton: {
-    marginTop: 20,
+    marginTop: 40,
     width: "100%",
     height: 50,
     backgroundColor: Colors.primary,
@@ -220,5 +217,6 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: "500",
     marginRight: 5,
+    color: Colors.primary,
   },
 });

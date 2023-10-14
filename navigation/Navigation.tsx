@@ -1,13 +1,10 @@
 import React, { useState, useEffect } from "react";
-
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { NavigationContainer } from "@react-navigation/native";
-
 import { InitialScreenOnStart } from "./InitialScreenOnStart";
-import AuthStack from "./AuthStack";
-
 import { User, onAuthStateChanged } from "firebase/auth";
 import { auth } from "../firebase/firebase";
+import MainTabNavigator from "./MainTabNavigator";
 
 const Stack = createNativeStackNavigator();
 
@@ -22,13 +19,12 @@ export default function Navigation() {
   }, []);
 
   return (
-    //   {user ? <AuthStack /> : <InitialScreenOnStart />}
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="InitialScreenOnStart">
+      <Stack.Navigator initialRouteName={user ? "MainTabNavigator" : "InitialScreenOnStart"}>
         {user ? (
           <Stack.Screen
-            name="AuthStack"
-            component={AuthStack}
+            name="MainTabNavigator" // Updated screen name
+            component={MainTabNavigator}
             options={{ headerShown: false }}
           />
         ) : (

@@ -6,7 +6,7 @@ const Colors = {
     secondary: "#FF5722",
     dark: "#201D28",
     white: "#FFFF",
-    deep: "##FF9800",
+    deep: "#FF9800",
     lightBlue: "#00A8DE",
     text: "#FFEB3B",
   };
