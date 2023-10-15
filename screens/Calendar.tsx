@@ -4,7 +4,7 @@ import { View, Text, StyleSheet } from 'react-native';
 const Calendar = () => {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Accountability</Text>
+
       {/* Add your content for the Accountability screen here */}
     </View>
   );

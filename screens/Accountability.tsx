@@ -1,10 +1,11 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
+import UserProfile from '../components/UserProfile';
 
 const Accountability = () => {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Accountability</Text>
+      
       {/* Add your content for the Accountability screen here */}
     </View>
   );
