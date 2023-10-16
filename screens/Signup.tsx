@@ -27,7 +27,7 @@ export default function Signup({ navigation }: { navigation: any }) {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<any>("");
   const [username, setUsername] = useState<string>("");
-  const [phone, setPhone] = useState<number | string>("");
+  // const [phone, setPhone] = useState<number | string>("");
   const [loading, setLoading] = useState<boolean>(false);
 
   const handleSignup = async () => {
@@ -39,7 +39,7 @@ export default function Signup({ navigation }: { navigation: any }) {
         setDoc(doc(db, "users", user.uid), {
           Name: username,
           Email: email,
-          PhoneNumber: phone,
+          // PhoneNumber: phone,
           CreatedAt: new Date().toUTCString(),
         });
       })
@@ -75,7 +75,7 @@ export default function Signup({ navigation }: { navigation: any }) {
               onChangeText={(text) => setEmail(text)}
             />
           </View>
-          {/* Phone Number */}
+           {/* Phone Number 
           <View style={styles.emailContainer}>
             <Text style={styles.emailText}>Phone Number</Text>
             <TextInput
@@ -85,7 +85,7 @@ export default function Signup({ navigation }: { navigation: any }) {
               keyboardType="numeric"
               onChangeText={(text) => setPhone(text)}
             />
-          </View>
+          </View> */}
           {/* Password */}
           <View style={styles.passwordContainer}>
             <Text style={styles.passwordText}>Password</Text>

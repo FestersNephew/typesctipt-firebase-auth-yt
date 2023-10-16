@@ -13,12 +13,12 @@ const Middle: FC<MiddleProps> = () => {
       <View style={styles.imageContainer}>
         <Image style={styles.image} source={require("../assets/forgot.png")} />
         <Text style={{ fontSize: 16, color: "white", fontWeight: "bold" }}>
-          Abena Dorcas
+          T-Rex Ophora
         </Text>
         <Text
           style={{ fontSize: 16, color: Colors.gray, fontWeight: "500" }}
         >
-          abenadorcas@gmail.com
+          unclefestersnephew@gmail.com
         </Text>
       </View>
 

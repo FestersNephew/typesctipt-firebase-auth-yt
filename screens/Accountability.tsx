@@ -1,11 +1,17 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import UserProfile from '../components/UserProfile';
+import Colors from '../constants/Colors';
+import Top from '../components/Top';
+import Middle from '../components/Middle';
+import Bottom from '../components/Bottom';
 
 const Accountability = () => {
   return (
     <View style={styles.container}>
-      
+        <Top />
+        <Middle />
+        <Bottom />
       {/* Add your content for the Accountability screen here */}
     </View>
   );
@@ -16,7 +22,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#fff', // Set your desired background color
+    backgroundColor: Colors.primary,
   },
   title: {
     fontSize: 24,

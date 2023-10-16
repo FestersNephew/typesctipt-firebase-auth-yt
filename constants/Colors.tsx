@@ -9,6 +9,7 @@ const Colors = {
     deep: "#FF9800",
     lightBlue: "#00A8DE",
     text: "#FFEB3B",
+    green: '#4CAF50'
   };
   
   export default Colors;

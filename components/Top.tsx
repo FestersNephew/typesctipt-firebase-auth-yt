@@ -8,11 +8,14 @@ interface TopProps {}
 const Top: FC<TopProps> = () => {
   return (
     <View style={styles.icons}>
-      <TouchableOpacity style={styles.back}>
-        <AntDesign name="arrowleft" size={24} color="white" />
+      <TouchableOpacity style={styles.icons}>
+        <AntDesign name="profile" size={24} color="white" />
       </TouchableOpacity>
       <TouchableOpacity style={styles.icons}>
-        <AntDesign name="setting" size={35} color="white" />
+        <AntDesign name="table" size={35} color="white" />
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.icons}>
+        <AntDesign name="dashboard" size={24} color="white" />
       </TouchableOpacity>
     </View>
   );
@@ -23,6 +26,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
+    padding: 10,
   },
   back:{
     backgroundColor: Colors.secondary,

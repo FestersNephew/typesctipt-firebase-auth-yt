@@ -3,14 +3,13 @@ import React, { FC } from "react";
 import Colors from "../constants/Colors";
 import Sizes from "../constants/Sizes";
 import Card from "../constants/Card";
-import { Entypo } from "@expo/vector-icons";
 import { FontAwesome } from "@expo/vector-icons";
 
 const Bottom: FC = () => {
   return (
     <View style={styles.bottomContainer}>
       <Text style={{ fontSize: 20, color: Colors.white, fontWeight: "bold" }}>
-        Complete Profile
+        Current Challenges
       </Text>
 
       <View style={styles.completeContainer}>
@@ -21,7 +20,7 @@ const Bottom: FC = () => {
                       color={Colors.primary} />}
                   cardTextOne="02 Steps"
                   cardText="Education"
-                  style={{ backgroundColor: Colors.primary }} cardTextTwo={""}        />
+                  style={{ backgroundColor: Colors.text }} cardTextTwo={""}        />
         <Card
                   icon={<FontAwesome name="briefcase" size={24} color={Colors.secondary} />}
                   cardTextOne="04 Steps"
@@ -30,7 +29,10 @@ const Bottom: FC = () => {
       </View>
 
       <View style={styles.bottomSection}>
-        <Text style={styles.bottomSectionText}>Buy Pro $23.49</Text>
+        <Text style={styles.bottomSectionText}>Your Completed Challenges</Text>
+      </View>
+      <View style={styles.bottomSection}>
+        <Text style={styles.bottomSectionText}>All Challenges</Text>
       </View>
     </View>
   );
