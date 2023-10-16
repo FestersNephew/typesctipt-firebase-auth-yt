@@ -1,28 +1,27 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
-import Colors from '../constants/Colors';
-import CalendarComponent from '../components/Calendar';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import CalendarComponent from '../components/CalendarComponent';
+import EventListScreen from '../components/EventListScreen';
 
-const Calendar = () => {
+const Stack = createNativeStackNavigator();
+
+export const Calendar = () => {
   return (
-    <View style={styles.container}>
-      <CalendarComponent />
-    </View>
+    <Stack.Navigator initialRouteName="CalendarComponent">
+      <Stack.Screen
+        name="CalendarComponent"
+        component={CalendarComponent}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="EventListScreen"
+        component={EventListScreen}
+        options={{
+          headerShown: false,
+        }}
+      />
+    </Stack.Navigator>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: Colors.green, 
-  },
-  title: {
-    fontSize: 24,
-    fontWeight: 'bold',
-  },
-  // Add additional styles as needed
-});
-
-export default Calendar;

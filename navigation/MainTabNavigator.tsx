@@ -2,7 +2,7 @@ import React from 'react';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Accountability from '../screens/Accountability';
-import Calendar from '../screens/Calendar';
+import { Calendar } from '../screens/Calendar';
 import Resources from '../screens/Resources';
 import Settings from '../screens/SettingsScreen';
 import Colors from '../constants/Colors';

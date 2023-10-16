@@ -5,13 +5,12 @@ import Colors from '../constants/Colors';
 import Top from '../components/Top';
 import Middle from '../components/Middle';
 import Bottom from '../components/Bottom';
+import Profile from './Profile';
 
 const Accountability = () => {
   return (
     <View style={styles.container}>
-        <Top />
-        <Middle />
-        <Bottom />
+        <Profile/>
       {/* Add your content for the Accountability screen here */}
     </View>
   );

@@ -1,13 +1,13 @@
 import { StyleSheet, Text, View, Image, ImageSourcePropType } from "react-native";
 import React, { FC } from "react";
-import { AntDesign } from "@expo/vector-icons";
 import Colors from "../constants/Colors";
-import { Entypo } from "@expo/vector-icons";
-import { FontAwesome } from "@expo/vector-icons";
+import 'firebase/auth';
+
 
 interface MiddleProps {}
 
 const Middle: FC<MiddleProps> = () => {
+  
   return (
     <View style={styles.main}>
       <View style={styles.imageContainer}>
