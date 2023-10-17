@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet } from 'react-native';
+import { AppRegistry, StyleSheet } from 'react-native';
 import Navigation from './navigation/Navigation';
 import './firebase/firebase';
 
@@ -17,3 +17,5 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
+
+AppRegistry.registerComponent('MyApp', () => App);
