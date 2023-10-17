@@ -83,7 +83,7 @@ const AddEventComponent: React.FC<AddEventComponentProps> = ({ onClose }) => {
       {showPicker && (
         <DateTimePicker
           mode="date"
-          display="spinner"
+          display="default"
           value={date}
           onChange={onChange}
           style={styles.datePicker}
