@@ -6,7 +6,7 @@ interface Event {
   id: string;
   eventName: string;
   description?: string;
-  date?: string;
+  date?: number;
   location?: string;
   // Include any other properties if necessary
 }

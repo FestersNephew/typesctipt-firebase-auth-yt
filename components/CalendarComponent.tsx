@@ -10,7 +10,7 @@ import fetchEventsFromFirestore from './FetchEventsFromFirestore';
 interface Event {
   id: string;
   eventName: string;
-  date?: string; // Make the date field optional
+  date?: number; // Make the date field optional
 }
 
 type CalendarComponentProps = {
@@ -44,17 +44,17 @@ const CalendarComponent: React.FC<CalendarComponentProps> = () => {
       <Button title="View Events" onPress={navigateToEventListScreen} />
       {events.length > 0 && (
         <FlatList
-          data={events}
-          keyExtractor={(item) => item.id}
-          renderItem={({ item }) => (
-            <View style={styles.eventCard}>
-              <Text style={styles.eventName}>{item.eventName}</Text>
-              <Text style={styles.eventDate}>{item.date}</Text>
-            </View>
+        data={events}
+        keyExtractor={(item) => item.id}
+        renderItem={({ item }) => (
+          <View style={styles.eventCard}>
+            <Text style={styles.eventName}>{item.eventName}</Text>
+            <Text style={styles.eventDate}>{new Date(item.date as number).toDateString()}</Text>
+          </View>
           )}
         />
       )}
-      <Modal animationType="slide" transparent={true} visible={modalVisible}>
+      <Modal animationType="slide" transparent={false} visible={modalVisible}>
         <AddEventComponent onClose={() => setModalVisible(false)} />
       </Modal>
     </View>

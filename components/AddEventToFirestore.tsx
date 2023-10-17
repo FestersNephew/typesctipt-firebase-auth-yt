@@ -2,7 +2,7 @@ import { collection, addDoc } from 'firebase/firestore';
 import { db } from '../firebase/firebase'; // Import your Firebase configuration
 
 // Function to add an event to Firestore
-const addEventToFirestore = async (eventData: { name: string; description: string; date: string; location: string; }) => {
+const addEventToFirestore = async (eventData: { name: string; description: string; date: number; location: string; }) => {
     try {
       // Reference to the "events" collection in Firestore (change "events" to your collection name)
       const eventsRef = collection(db, 'calendarEvents');
