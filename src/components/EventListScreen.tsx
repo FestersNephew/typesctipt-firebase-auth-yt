@@ -16,7 +16,7 @@ const EventListScreen = () => {
 
 useEffect(() => {
     const fetchEvents = async () => {
-        const fetchedEvents = await fetchEventsFromFirestore() as Event[];
+        const fetchedEvents = await fetchEventsFromFirestore() as unknown as Event[];
         setEvents(fetchedEvents.filter(event => event.date !== undefined));
     };
 

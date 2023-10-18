@@ -1,10 +1,7 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
-import UserProfile from '../components/UserProfile';
+import { View, StyleSheet } from 'react-native';
 import Colors from '../constants/Colors';
-import Top from '../components/Top';
-import Middle from '../components/Middle';
-import Bottom from '../components/Bottom';
+
 import Profile from './Profile';
 
 const Accountability = () => {

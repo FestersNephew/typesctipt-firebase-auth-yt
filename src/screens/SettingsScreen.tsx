@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, StyleSheet, Button } from 'react-native';
 import Colors from '../constants/Colors';
 import { signOut } from '@firebase/auth'; 
-import { auth } from '../firebase/firebase';
+import { auth } from '../../firebase/firebase';
 
 const Settings = () => {
   const handleSignOut = async () => {

@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { View } from 'react-native'
 import React from 'react'
 import Top from '../components/Top'
 import Middle from '../components/Middle'
@@ -13,5 +13,3 @@ export default function Profile() {
     </View>
   )
 }
-
-const styles = StyleSheet.create({})

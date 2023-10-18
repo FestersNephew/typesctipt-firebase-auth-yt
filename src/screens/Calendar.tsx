@@ -1,7 +1,7 @@
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import CalendarComponent from '../components/CalendarComponent';
-import EventListScreen from '../components/EventListScreen';
+import CalendarComponent from '../../src/components/CalendarComponent';
+import EventListScreen from '../../src/components/EventListScreen';
 
 const Stack = createNativeStackNavigator();
 

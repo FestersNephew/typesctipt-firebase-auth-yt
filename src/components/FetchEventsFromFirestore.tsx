@@ -1,5 +1,5 @@
 import { collection, getDocs } from 'firebase/firestore';
-import { db } from '../firebase/firebase';
+import { db } from '../../firebase/firebase';
 
 // Define the Event type to match your data structure
 interface Event {

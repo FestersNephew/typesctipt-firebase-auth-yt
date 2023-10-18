@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, Image, ImageSourcePropType } from "react-native";
+import { StyleSheet, Text, View, Image } from "react-native";
 import React, { FC } from "react";
 import Colors from "../constants/Colors";
 import 'firebase/auth';
@@ -11,7 +11,7 @@ const Middle: FC<MiddleProps> = () => {
   return (
     <View style={styles.main}>
       <View style={styles.imageContainer}>
-        <Image style={styles.image} source={require("../assets/forgot.png")} />
+        <Image style={styles.image} source={require("../../assets/forgot.png")} />
         <Text style={{ fontSize: 16, color: "white", fontWeight: "bold" }}>
           T-Rex Ophora
         </Text>

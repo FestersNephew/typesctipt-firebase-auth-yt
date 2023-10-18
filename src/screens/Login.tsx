@@ -11,9 +11,7 @@ import {
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import React, { useState } from "react";
 import Colors from "../constants/Colors";
-import { Feather } from "@expo/vector-icons";
-import { auth, db } from "../firebase/firebase";
-import { Entypo } from "@expo/vector-icons";
+import { auth } from "../../firebase/firebase";
 import { signInWithEmailAndPassword } from "firebase/auth";
 
 const { width, height } = Dimensions.get("window");
@@ -48,7 +46,7 @@ export default function Login({ navigation }: { navigation: any }) {
         <View style={styles.container}>
           <View style={styles.imageContainer}>
             <Image
-              source={require("../assets/forgot.png")}
+              source={require("../../assets/forgot.png")}
               style={{ width: 300, height: 300 }}
             />
           </View>

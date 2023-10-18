@@ -1,6 +1,6 @@
 import { StyleSheet, Text, View, TextInput, TouchableOpacity } from "react-native";
 import React, { useState } from "react";
-import { db } from "../firebase/firebase";
+import { db } from "../../firebase/firebase";
 import {
   doc,
   setDoc,

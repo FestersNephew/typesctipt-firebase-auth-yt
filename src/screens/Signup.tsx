@@ -9,7 +9,7 @@ import {
 } from "react-native";
 import React, { useState } from "react";
 import Colors from "../constants/Colors";
-import { auth, db } from "../firebase/firebase";
+import { auth, db } from "../../firebase/firebase";
 //import { Entypo } from "@expo/vector-icons";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { doc, setDoc } from "firebase/firestore";
