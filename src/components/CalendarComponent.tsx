@@ -38,10 +38,12 @@ const CalendarComponent: React.FC<CalendarComponentProps> = () => {
   }, []);
 
   return (
-    <View style={{ flex: 1 }}>
+    <View style={styles.calendar}>
       <Calendar onDayPress={(day) => console.log('selected day', day)} />
-      <Button title="Add Event" onPress={() => setModalVisible(true)} />
-      <Button title="View Events" onPress={navigateToEventListScreen} />
+      <View style={styles.buttons}>
+        <Button title="Add Event" onPress={() => setModalVisible(true)} />
+        <Button title="View Events" onPress={navigateToEventListScreen} />
+      </View>
       {events.length > 0 && (
         <FlatList
         data={events}
@@ -77,6 +79,15 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: 'gray', // Adjust the color as needed
   },
+  calendar: {
+    flex: 1,
+    margin: 10,
+    paddingTop: 20,
+  },
+  buttons: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+  }
 });
 
 export default CalendarComponent;

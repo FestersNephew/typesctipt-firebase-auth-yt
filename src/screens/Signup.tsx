@@ -23,11 +23,20 @@ if (Platform.OS === "ios") {
   top = 0;
 }
 
+export type UserData = {
+  name: string;
+  email: string;
+  createdAt: string;
+  goals12Months: string;
+  goals1Month: string;
+  favoriteQuote: string;
+  location: string;
+};
+
 export default function Signup({ navigation }: { navigation: any }) {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<any>("");
   const [username, setUsername] = useState<string>("");
-  // const [phone, setPhone] = useState<number | string>("");
   const [loading, setLoading] = useState<boolean>(false);
 
   const handleSignup = async () => {
@@ -35,19 +44,27 @@ export default function Signup({ navigation }: { navigation: any }) {
     await createUserWithEmailAndPassword(auth, email.trim(), password)
       .then((userCredential) => {
         const user = userCredential.user;
+        console.log("User UID:", user.uid);
+        const userData: UserData = {
+          name: username,
+          email: email,
+          createdAt: new Date().toUTCString(),
+          goals12Months: 'Be the best me I can be.',
+          goals1Month: 'Organize my life',
+          favoriteQuote: 'Try not, do or do not. There is no try.',
+          location: 'The world',
+        };
         setLoading(false);
-        setDoc(doc(db, "users", user.uid), {
-          Name: username,
-          Email: email,
-          // PhoneNumber: phone,
-          CreatedAt: new Date().toUTCString(),
-        });
+        // Use setDoc to create the user document with default values
+        setDoc(doc(db, "users", user.uid), userData);
       })
-      .then(() => alert("account created successfully 🎉"))
+      
+      .then(() => alert("Account created successfully 🎉"))
       .catch((err: any) => {
         alert(err.message);
       });
   };
+  
 
   return (
     <KeyboardAwareScrollView>
@@ -75,18 +92,6 @@ export default function Signup({ navigation }: { navigation: any }) {
               onChangeText={(text) => setEmail(text)}
             />
           </View>
-           {/* Phone Number 
-          <View style={styles.emailContainer}>
-            <Text style={styles.emailText}>Phone Number</Text>
-            <TextInput
-              style={styles.emailInput}
-              placeholder="Enter your phone number"
-              value={phone?.toString()}
-              keyboardType="numeric"
-              onChangeText={(text) => setPhone(text)}
-            />
-          </View> */}
-          {/* Password */}
           <View style={styles.passwordContainer}>
             <Text style={styles.passwordText}>Password</Text>
             <TextInput

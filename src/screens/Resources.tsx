@@ -7,7 +7,7 @@ const Resources = () => {
     const [status, setStatus] = React.useState({});
     return (
       <View style={styles.container}>
-        <Text style={styles.headerText}>Videos 4 You</Text>
+        <Text style={styles.headerText}>Meditation Videos</Text>
         <Video
           ref={video}
           style={styles.video}
@@ -19,6 +19,7 @@ const Resources = () => {
           isLooping
           onPlaybackStatusUpdate={status => setStatus(() => status)}
         />
+        <Text style={styles.headerText}>Reiki Videos</Text>
         <Video
           ref={video}
           style={styles.video}
