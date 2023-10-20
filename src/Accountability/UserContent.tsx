@@ -1,23 +1,22 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import fetchUserData from './fetchUserData'; // Import the fetchUserData function
 import { UserData } from '../screens/Signup'; // Import the UserData type
-import AuthContext from '../contexts/AuthContext';
+import { User } from 'firebase/auth';
 
+type UserContentProps = {
+  user: User;
+};
 
-const UserContent: React.FC = () => {
+const UserContent: React.FC<UserContentProps> = ({ user }) => {
   const [userData, setUserData] = useState<UserData | null>(null);
   const [loading, setLoading] = useState(true);
-
-  // Access userUID from the context
-  const { userUID } = useContext(AuthContext);
 
   useEffect(() => {
     const loadUserData = async () => {
       try {
-        if (userUID) {
-          // Use the userUID from the context
-          const userDoc = await fetchUserData(userUID);
+        if (user.uid) {
+          const userDoc = await fetchUserData(user.uid);
 
           if (userDoc) {
             setUserData(userDoc);
@@ -32,11 +31,12 @@ const UserContent: React.FC = () => {
     };
 
     loadUserData();
-  }, [userUID]); // Add userUID as a dependency
+  }, [user]); // Add user as a dependency
 
   if (loading) {
     return <Text>Loading...</Text>;
   }
+
 
   return (
     <View style={styles.container}>

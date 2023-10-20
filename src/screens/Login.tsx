@@ -14,6 +14,7 @@ import Colors from "../constants/Colors";
 import { auth } from "../../firebase/firebase";
 import { signInWithEmailAndPassword } from "firebase/auth";
 
+
 const { width, height } = Dimensions.get("window");
 let top;
 if (Platform.OS === "ios") {

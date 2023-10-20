@@ -1,17 +1,30 @@
-// Accountability.js
 import React, { useState } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import Header from './Header';
 import GroupContent from './GroupContent';
 import UserContent from './UserContent';
 import Challenge from './Challenge';
+import { User } from 'firebase/auth'; // Import the User type
 
-const Accountability = () => {
+type Props = {
+  user: User | null; // Define the type of the "user" prop
+};
+
+const Accountability: React.FC<Props> = ({ user }) => {
   const [selectedContent, setSelectedContent] = useState('person');
 
-  const toggleContent = (content: React.SetStateAction<string>) => {
+  const toggleContent = (content: string) => {
     setSelectedContent(content);
   };
+
+  if (!user) {
+    // Handle the case when the user is not logged in
+    return (
+      <View style={styles.contentContainer}>
+        <Text>Please log in to access this screen.</Text>
+      </View>
+    );
+  }
 
   return (
     <View style={styles.contentContainer}>
@@ -22,26 +35,18 @@ const Accountability = () => {
       />
       {selectedContent === 'person' && (
         <View>
-          {/* Render the content for the 'person' view */}
           <Text>User Content</Text>
-          <UserContent user={{
-            uid: '',
-            //photoURL: '',
-            displayName: '',
-            email: ''
-          }} />
+          <UserContent user={user} />
         </View>
       )}
       {selectedContent === 'chart' && (
         <View>
-          {/* Render the content for the 'chart' view */}
           <Text>Challenge Content</Text>
-          <Challenge/>
+          <Challenge />
         </View>
       )}
       {selectedContent === 'group' && (
         <View>
-          {/* Render the content for the 'group' view */}
           <Text>Group Content</Text>
           <GroupContent />
         </View>
@@ -50,10 +55,10 @@ const Accountability = () => {
   );
 };
 
-export default Accountability;
-
 const styles = StyleSheet.create({
   contentContainer: {
-    padding: 10, // Add padding
+    padding: 10,
   },
 });
+
+export default Accountability;
